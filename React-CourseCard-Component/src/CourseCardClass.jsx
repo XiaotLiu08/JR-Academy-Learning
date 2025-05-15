@@ -131,4 +131,3 @@ class CourseCard extends Component {
 }
 
 export default CourseCard;
-
