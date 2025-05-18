@@ -16,7 +16,8 @@ const App = () => {
       location: "Online",
       difficulty: "Beginner",
       isNew: true,
-      imageUrl: "https://via.placeholder.com/320x180?text=React+Course"
+      imageUrl: "https://via.placeholder.com/320x180?text=React+Course",
+      isCompleted: false
     },
     {
       id: 2,
@@ -27,7 +28,8 @@ const App = () => {
       location: "Online",
       difficulty: "Advanced",
       isNew: false,
-      imageUrl: "https://via.placeholder.com/320x180?text=JavaScript+Course"
+      imageUrl: "https://via.placeholder.com/320x180?text=JavaScript+Course",
+      isCompleted: true
     },
     {
       id: 3,
@@ -38,7 +40,8 @@ const App = () => {
       location: "Hybrid",
       difficulty: "Intermediate",
       isNew: true,
-      imageUrl: "https://via.placeholder.com/320x180?text=Python+Course"
+      imageUrl: "https://via.placeholder.com/320x180?text=Python+Course",
+      isCompleted: false
     }
   ];
 
@@ -60,6 +63,7 @@ const App = () => {
             difficulty={course.difficulty}
             isNew={course.isNew}
             imageUrl={course.imageUrl}
+            isCompleted={course.isCompleted}
           />
         ))}
       </div>

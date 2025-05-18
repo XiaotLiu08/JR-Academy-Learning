@@ -10,25 +10,31 @@ const CourseCard = (props) => {
         location,
         difficulty,
         isNew = false,
-        imageUrl
+        imageUrl,
+        isCompleted
     } = props;
 
 
-    const [enroled, setEnroled] = useState(0)
+    const [enrolled, setEnrolled] = useState(0)
     const [showReviewInput, setShowReviewInput] = useState(false);
     const [reviewSubmitted, setReviewSubmitted] = useState(false)
     const [reviewText, setReviewText] = useState('')
 
     const getButtonText = () => {
-        if (difficulty === 'Beginner') {
-            return 'Start Learning Now!'
+        if (!isCompleted) {
+            if (difficulty === 'Beginner') {
+                return 'Start Learning Now!'
+            } else {
+                return 'Enroll Now!'
+            }
         } else {
-            return 'Enroll Now!'
+            return 'Revisit Course'
         }
+
     }
 
     const handleEnrollClick = () => {
-        setEnroled(prevCount => prevCount + 1);
+        setEnrolled(prevCount => prevCount + 1);
     };
 
     const handleReviewSubmit = () => {
@@ -44,10 +50,14 @@ const CourseCard = (props) => {
         } else if (showReviewInput) {
             return (
                 <div className="review-input-container">
-                    <input type='text'
+                    <textarea
                         placeholder='enter your review'
                         value={reviewText}
-                        onChange={(e) => setReviewText(e.target.value)}
+                        onChange={(e) => {
+                            console.log('value', reviewText)
+                            setReviewText(e.target.value)
+                            console.log(e.target.value);
+                        }}
                         className="review-input" />
                     <button
                         onClick={handleReviewSubmit}
@@ -93,9 +103,9 @@ const CourseCard = (props) => {
                 </div>
 
                 <button className="enroll-button" onClick={handleEnrollClick}>{getButtonText()}</button>
-                {enroled > 0 && (
+                {enrolled > 0 && (
                     <p className="enrollment-count">
-                        Enrolled: {enroled} {enroled === 1 ? 'time' : 'times'}
+                        Enrolled: {enrolled} {enrolled === 1 ? 'time' : 'times'}
                     </p>
                 )}
 
